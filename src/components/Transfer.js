@@ -8,7 +8,6 @@ function Transfer() {
     const [idx, setIdx] = useState(0);
     const [to_address, setToAddress] = useState("");
     
-    
     let transfer = () => {
         const provider = new ethers.providers.Web3Provider(window.ethereum);
         const address = data.address;
@@ -18,18 +17,17 @@ function Transfer() {
             const signer = provider.getSigner();
             let kitties = new ethers.Contract(address, abi);
             kitties = kitties.connect(signer);
-            kitties.transferFrom(window.ethereum.selectedAddress, to_address, idx);
+            kitties.transferFrom(window.ethereum.selectedAddress, to_address, idx).catch((err) => alert(err.message));
         });
 
     }
-    
 
     return (
         <div className="Transfer">
             <h3>Transfer Kitty:</h3>
             <p>Receiver:</p>
             <input type="idx" value={to_address} onInput= {e => setToAddress(e.target.value)} />
-            <p>Id:</p>
+            <p>Kitty Id:</p>
             <input type="idx" value={idx} onInput= {e => setIdx(e.target.value)} />
             <input
             type="button"

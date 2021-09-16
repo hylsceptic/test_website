@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { ImageList } from '@material-ui/core';
 import ImageListItem from '@material-ui/core/ImageListItem';
 import { ImageListItemBar } from '@material-ui/core';
+import './View.css';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -18,11 +19,11 @@ const useStyles = makeStyles((theme) => ({
     }
   }));
 
-function View({kitties, show_my_kitties, show_all_kitties}) {
+function View({kitties, show_my_kitties, show_all_kitties, image_url}) {
     
     const classes = useStyles();
     return (
-        <div>
+        <div className="View">
           <h3>Show Kitties:</h3>
           <div>
             <input
@@ -37,11 +38,12 @@ function View({kitties, show_my_kitties, show_all_kitties}) {
                   onClick={show_all_kitties}
                   />
           </div>
+          <p>{kitties.length === 0 ? "Mint at least one kitty to show..." : ""}</p>
           <div className={classes.root}>
             <ImageList cols={4} rowHeight={225}  gap={20} className={classes.gridList}>
               {kitties.map((tile) => (
                 <ImageListItem key={tile}>
-                  <img src={"https://arweave.net/9IBrIWzA8udN0fIv1ZZYGuGHvcs1tHRTpcCfPjyfOM8/"  + tile.toString() + ".png"} />
+                  <img src={"https://arweave.net/" + "60Y_LV_957hWcDfLZQ56LcGRbLKHOgc4d4RnJf3nLho/" + tile.toString() + ".png"} />
                   <ImageListItemBar
                     title={"Kitties #" + tile.toString()}
                   />

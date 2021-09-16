@@ -1,7 +1,11 @@
-.Transfer div {
-    margin: 1;
+.Transfer {
+    margin: 20px;
 }
 
 .Transfer p {
-    margin: 0;
+    margin: 0 20px;
+}
+
+.Transfer input {
+    margin-left: 20px;
 }
